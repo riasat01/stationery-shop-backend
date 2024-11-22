@@ -1,13 +1,15 @@
-import IStationeryProduct from "./stationeryProduct.interface";
-import StationeryProduct from "./stationeryProduct.model";
+import IStationeryProduct from './stationeryProduct.interface';
+import StationeryProduct from './stationeryProduct.model';
 
-const createStationeryProduct = async (stationeryProduct: IStationeryProduct) => {
-    const result = await StationeryProduct?.create(stationeryProduct);
-    return result;
-}
+const insertStationeryProductIntoDB = async (
+  stationeryProduct: IStationeryProduct,
+) => {
+  const result = await StationeryProduct?.create(stationeryProduct);
+  return result;
+};
 
 const StationeryProductServices = {
-    createStationeryProduct
-}
+  insertStationeryProductIntoDB,
+};
 
 export default StationeryProductServices;
