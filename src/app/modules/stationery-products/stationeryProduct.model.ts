@@ -37,6 +37,8 @@ const stationeryProductSchema = new Schema<IStationeryProduct>({
     type: Boolean,
     required: true,
   },
+  createdAt: { type: Date, default: Date.now },
+  updatedAt: { type: Date, default: Date.now }
 });
 
 const StationeryProduct = model<IStationeryProduct>(

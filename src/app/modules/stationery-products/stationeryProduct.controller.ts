@@ -18,6 +18,7 @@ const createStationeryProduct = async (req: Request, res: Response) => {
       message: 'Validation failed',
       success: false,
       error,
+      stack: (error as Error).stack
     });
   }
 };
