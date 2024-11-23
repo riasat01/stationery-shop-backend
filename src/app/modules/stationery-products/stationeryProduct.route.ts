@@ -4,6 +4,7 @@ import StationeryProductControllers from "./stationeryProduct.controller";
 const router = Router();
 
 router.post(`/`, StationeryProductControllers?.createStationeryProduct);
-router.get(`/`, StationeryProductControllers?.getAllStationeryProducts)
+router.get(`/`, StationeryProductControllers?.getAllStationeryProducts);
+router.get(`/:productId`, StationeryProductControllers?.getSingleStationeryProduct);
 
 export default router

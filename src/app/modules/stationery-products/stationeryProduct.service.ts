@@ -8,14 +8,20 @@ const insertStationeryProductIntoDB = async (
   return result;
 };
 
-const findAllStationeryProductFromDB = async() => {
+const findAllStationeryProductFromDB = async () => {
   const result = await StationeryProduct?.find();
+  return result;
+}
+
+const findSingleStationeryProductFromDB = async (_id: string) => {
+  const result = await StationeryProduct?.findOne({ _id });
   return result;
 }
 
 const StationeryProductServices = {
   insertStationeryProductIntoDB,
-  findAllStationeryProductFromDB
+  findAllStationeryProductFromDB,
+  findSingleStationeryProductFromDB
 };
 
 export default StationeryProductServices;

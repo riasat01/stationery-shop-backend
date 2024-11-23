@@ -33,7 +33,25 @@ const getAllStationeryProducts = async(req: Request, res: Response) => {
     });
   } catch (error) {
     res.status(500).json({
-      message: 'Validation failed',
+      message: 'Something went wrong while retrieving the products',
+      success: false,
+      error,
+      stack: (error as Error).stack
+    });
+  }
+}
+const getSingleStationeryProduct = async(req: Request, res: Response) => {
+  try {
+    const {productId} = req.params;
+    const result = await StationeryProductServices?.findSingleStationeryProductFromDB(productId);
+    res.status(200).json({
+      message: 'Product retrieved successfully',
+      success: true,
+      data: result,
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: 'Something went wrong while retrieving the product',
       success: false,
       error,
       stack: (error as Error).stack
@@ -43,7 +61,8 @@ const getAllStationeryProducts = async(req: Request, res: Response) => {
 
 const StationeryProductControllers = {
   createStationeryProduct,
-  getAllStationeryProducts
+  getAllStationeryProducts,
+  getSingleStationeryProduct
 };
 
 export default StationeryProductControllers;
