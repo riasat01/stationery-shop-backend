@@ -28,11 +28,17 @@ const updateStationeryProductInDB = async (
   return result;
 };
 
+const deleteStationeryProductFromDB = async (id: string) => {
+  const result = await StationeryProduct.findByIdAndDelete(id);
+  return result;
+};
+
 const StationeryProductServices = {
   insertStationeryProductIntoDB,
   findAllStationeryProductFromDB,
   findSingleStationeryProductFromDB,
   updateStationeryProductInDB,
+  deleteStationeryProductFromDB,
 };
 
 export default StationeryProductServices;

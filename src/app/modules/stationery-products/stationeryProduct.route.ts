@@ -13,5 +13,9 @@ router.put(
   `/:productId`,
   StationeryProductControllers?.updateStationeryProduct,
 );
+router.delete(
+  `/:productId`,
+  StationeryProductControllers?.deleteStationeryProduct,
+);
 
 export default router;
