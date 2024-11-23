@@ -23,8 +23,27 @@ const createStationeryProduct = async (req: Request, res: Response) => {
   }
 };
 
+const getAllStationeryProducts = async(req: Request, res: Response) => {
+  try {
+    const result = await StationeryProductServices?.findAllStationeryProductFromDB();
+    res.status(200).json({
+      message: 'Products retrieved successfully',
+      success: true,
+      data: result,
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: 'Validation failed',
+      success: false,
+      error,
+      stack: (error as Error).stack
+    });
+  }
+}
+
 const StationeryProductControllers = {
   createStationeryProduct,
+  getAllStationeryProducts
 };
 
 export default StationeryProductControllers;

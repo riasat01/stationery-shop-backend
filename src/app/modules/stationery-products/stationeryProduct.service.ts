@@ -8,8 +8,14 @@ const insertStationeryProductIntoDB = async (
   return result;
 };
 
+const findAllStationeryProductFromDB = async() => {
+  const result = await StationeryProduct?.find();
+  return result;
+}
+
 const StationeryProductServices = {
   insertStationeryProductIntoDB,
+  findAllStationeryProductFromDB
 };
 
 export default StationeryProductServices;
