@@ -1,8 +1,23 @@
+import StationeryProduct from '../stationery-products/stationeryProduct.model';
 import IOrder from './order.interface';
 import Order from './order.model';
 
 const insertOrderIntoDB = async (order: IOrder) => {
-  const result = await Order?.create(order);
+  const product = await StationeryProduct.findOne({ _id: order.product });
+  if (!product) {
+    throw new Error('Product not found');
+  }
+  if (product.quantity < order.quantity) {
+    throw new Error('Insufficient stock');
+  }
+  const result = await Order.create(order);
+  await StationeryProduct.updateOne(
+    { _id: order.product },
+    {
+      $inc: { quantity: -order.quantity },
+      $set: { inStock: product.quantity - order.quantity > 0 },
+    },
+  );
   return result;
 };
 
