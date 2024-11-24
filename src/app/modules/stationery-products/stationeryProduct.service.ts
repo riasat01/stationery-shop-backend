@@ -24,7 +24,7 @@ const updateStationeryProductInDB = async (
 ) => {
   const result = await StationeryProduct.findByIdAndUpdate(id, updateData, {
     new: true,
-    runValidators: true
+    runValidators: true,
   });
   return result;
 };
